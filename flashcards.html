@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUMP2STUDY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/logoperron.svg" type="image/svg+xml">
+</head>
+<body>
+    <nav id = "navbar">
+    <div id="logo-container">
+        <img id ="logo" src="/images/logoperron.svg" alt="Logo" width="100" height="100">
+
+    </div>
+    <button id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        ≡
+    </button>
+    <ul>
+        
+        <li ><a href="home.html"><img src="/images/homepage-icon.png" alt="Home" width="20" height="20"><span>Home</span></a></li>
+        <li ><a href="settings.html"><img src="/images/settings-2.svg" alt="Settings" width="20" height="20"><span>Settings</span></a></li>
+        <li><a href="tasks.html"><img src="/images/check-list-icon.webp" alt="To do list" width="20" height="20"><span>To do list</span></a></li>
+        <li><a href="library.html"><img src="/images/books-stack-of-three.svg" alt="Library" width="20" height="20"><span>Library</span></a></li>
+        <li><a href="ai.html"><img src="/images/ai-mi-algorithm.svg" alt="Innovative AI" width="20" height="20"><span>Eincrates AI</span></a></li>
+        <li><a href="schedule.html"><img src="/images/daily-schedule-icon.webp" alt="Schedule" width="20" height="20"><span>Schedule</span></a></li>
+        <li><a href="focus.html"><img src="/images/focus.png" alt="Focus" width="20" height="20"><span>Focus</span></a></li>
+        <li><a href="flashcards.html"><img src="/images/business-cards.svg" alt="Flashcards" width="20" height="20"><span>Flashcards</span></a></li>
+        
+
+    </ul>    
+    </nav>
+    <div class="Collection" id ="collection">
+        <h1 id="colection-title"> 
+            My Flashcards
+        </h1>
+       <input id="ascreen">
+       <input id ="bscreen"> 
+        <button id="addflashcard">
+            +
+        </button>
+
+    </div> 
+    <button></button>
+   <script>
+        const navbar = document.getElementById("navbar");
+        const menuToggle = document.getElementById("menu-toggle");
+        // 2. Listen for clicks on the button
+        menuToggle.addEventListener("click", function() {
+            navbar.classList.toggle("expanded");
+            const isExpanded = navbar.classList.contains("expanded");
+            menuToggle.setAttribute("aria-expanded", isExpanded);
+
+        });
+
+        const sa = document.getElementById("ascreen");
+        const sb = document.getElementById("bscreen");
+        const add = document.getElementById("addflashcard");
+        const col = document.getElementById("collection");
+        
+        // 1. Arranca con lo que ya estaba guardado (o vacío si no hay nada)
+        const cards = JSON.parse(localStorage.getItem("flashcards")) || [];
+        
+        // 2. Función que pinta UNA tarjeta a partir de sus datos
+        function paintCard(cardtext) {
+            const fc = document.createElement("div");
+            fc.className = "Flashcard";
+            fc.textContent = cardtext.a;
+        
+            let showingA = true; // cada tarjeta recuerda su propio lado
+            fc.addEventListener("click", function () {
+                showingA = !showingA;
+                fc.textContent = showingA ? cardtext.a : cardtext.b;
+            });
+        
+            col.appendChild(fc);
+        }
+        
+        
+        cards.forEach(paintCard);
+        
+        // 4. Al agregar una nueva
+        add.addEventListener("click", function () {
+            const text = sa.value.trim();
+            const text2 = sb.value.trim();
+            if (text === "" || text2 === "") return;
+        
+            const cardtext = { a: text, b: text2 };
+            cards.push(cardtext);
+            localStorage.setItem("flashcards", JSON.stringify(cards));
+            paintCard(cardtext);
+        
+            sa.value = "";
+            sb.value = "";
+        });
+   </script>
+</body>

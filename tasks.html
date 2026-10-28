@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUMP2STUDY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/logoperron.svg" type="image/svg+xml">
+</head>
+<body>
+    <nav id = "navbar">
+    <div id="logo-container">
+        <img id ="logo" src="/images/logoperron.svg" alt="Logo" width="100" height="100">
+
+    </div>
+    <button id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        ≡
+    </button>
+    <ul>
+        
+        <li ><a href="home.html"><img src="/images/homepage-icon.png" alt="Home" width="20" height="20"><span>Home</span></a></li>
+        <li ><a href="settings.html"><img src="/images/settings-2.svg" alt="Settings" width="20" height="20"><span>Settings</span></a></li>
+        <li><a href="tasks.html"><img src="/images/check-list-icon.webp" alt="To do list" width="20" height="20"><span>To do list</span></a></li>
+        <li><a href="library.html"><img src="/images/books-stack-of-three.svg" alt="Library" width="20" height="20"><span>Library</span></a></li>
+        <li><a href="ai.html"><img src="/images/ai-mi-algorithm.svg" alt="Innovative AI" width="20" height="20"><span>Eincrates AI</span></a></li>
+        <li><a href="schedule.html"><img src="/images/daily-schedule-icon.webp" alt="Schedule" width="20" height="20"><span>Schedule</span></a></li>
+        <li><a href="focus.html"><img src="/images/focus.png" alt="Focus" width="20" height="20"><span>Focus</span></a></li>
+        <li><a href="flashcards.html"><img src="/images/business-cards.svg" alt="Flashcards" width="20" height="20"><span>Flashcards</span></a></li>
+        
+
+    </ul>    
+    </nav>
+    <h1 id="Tudu">To Do List</h1>
+    <div id="to-do"> <input type="text" id="taskInput" placeholder="Add a task"> 
+    <button id="taskbtn">Add</button>
+    <ul id="tasklist"></ul>
+    </div>
+
+   <script>
+        const navbar = document.getElementById("navbar");
+        const menuToggle = document.getElementById("menu-toggle");
+
+        // 2. Listen for clicks on the button
+        menuToggle.addEventListener("click", function() {
+
+            // 3. Toggle the expanded class
+            navbar.classList.toggle("expanded");
+
+            // 4. Update the accessibility state
+            const isExpanded = navbar.classList.contains("expanded");
+            menuToggle.setAttribute("aria-expanded", isExpanded);
+
+        });
+        const input=document.getElementById("taskInput");
+        const tbtn = document.getElementById("taskbtn");
+        const lis = document.getElementById("tasklist");
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        function addtasks (taks){
+            const li = document.createElement("li");
+            li.textContent = taks;
+            lis.appendChild(li);
+            input.value = "";
+        }
+        tasks.forEach(addtasks);
+        tbtn.addEventListener("click", () =>{
+            const text = input.value.trim();
+            if (text === "") return;
+            tasks.push(text);
+            addtasks(tasks);
+            localStorage.setItem("tasks",JSON.stringify(tasks)); 
+        })
+        lis.addEventListener("click", (event) => {
+        const li = event.target.closest("li");
+            if (!li) return;
+            li.classList.toggle("done");
+    });
+        
+   </script>
+</body>

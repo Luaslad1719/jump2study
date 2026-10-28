@@ -1,0 +1,208 @@
+/*General */
+body{
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#navbar {
+    background-color: #4a9765;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    z-index: 1000;
+    height: 100vh;
+    box-sizing :border-box;
+    z-index: 1000;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+    align-items: center;
+}
+#navbar.expanded {
+    width: 260px;
+}
+#navbar a {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    text-decoration: none;
+    padding: 12px;
+    justify-content:flex-start;
+}
+
+#navbar span {
+    display: none;
+}
+
+#navbar.expanded span {
+    display: inline;
+}
+#navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+#navbar.expanded a{
+    justify-content: flex-start;
+}
+#logo{
+    width: 80px;
+    height: 80px;
+    left: 0;
+
+}
+/*Index */
+.pres{
+    margin-left: 120px;
+}
+#fp-image{
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+
+}
+#fp-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-image : url('/images/fp.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-left: 100px;
+    box-sizing: border-box;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    font-size: 2em;
+    align-items: center;
+    padding-left: 100px;
+}
+#fp-container .pres{
+    margin: 0 0 24px 0;
+}
+#get-started{
+    
+    background-color: #4a9765;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#misionhead{
+    color: #004e6d;
+    font-size: 3.0em;
+}
+#misiontext{
+    font-size: 2.2em;
+   
+    
+}
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    border-color: #0e7a34;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin-left: 130px;
+
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.card h3{
+    color: #004e6d;
+    font-size: 2.0em;
+}
+/*Focus*/
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #f0f3f0;
+    margin: 20px auto, #20741e;
+    margin: 20px auto;
+}
+
+.circle {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 8px solid #e94560;
+    box-shadow: 0 0 25px rgba(233, 69, 96, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clock {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #080808;
+    letter-spacing: 2px;
+  }
+
+.picktime {
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    margin-left : 130px;
+}
+
+button.picktime {
+    background: #e94560;
+    color: #fff;
+    cursor: pointer;
+}
+
+button.picktime:hover {
+    background: #ff6b81;
+}
+/*To do*/
+#Tudu{
+    margin-left: 125px;
+    
+}
+#to-do{
+    margin-left: 135px;
+}
+.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: blue;
+}
+#tasklist li {  
+    width: fit-content;
+    cursor: pointer;
+}
+/*Flashcards*/
+.Collection{
+    margin-left: 130px;
+}
+.Flashcard{
+    width: 215px;
+    min-height: 115px;
+    border-radius: 20px;
+    border :3px solid green;
+    text-align: center;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
